@@ -1,8 +1,7 @@
 <html>
 
 <head>
-  <!--下面有很多style都是没用到的，但是我改不动了-->
-  <!--css觉得真是很麻烦-->
+ 
   <style type="text/css">
     audio {
       align: center;
@@ -126,7 +125,7 @@
 
 <body>
  <h2 id="showLyc">000</h2>
-  <!--被注释掉的是因为开始的时候，打算把UI做好看些，后来觉得CSS真的是很难伺候,放弃了-->
+
   <!--<div id="player">
             <div class="ctrl">
                 <div class="control ">
@@ -143,8 +142,7 @@
             </div>
         </div>-->
   <div>
-    <!--audio 是HTML5中的新元素-->
-    <!--controls显示那个播放器 autoplay歌曲就绪后自动播放 loop歌曲放完了循环-->
+  
    
     <audio controls id="test" autoplay="true" loop="true">
       <source src="test.mp3">
@@ -179,14 +177,7 @@
 
     var shijianshuzu = new Array();
     var gecishuzu = new Array();
-    var showLyc = document.getElementById('showLyc');
-    //解析歌词，将时间和歌词分开
-    //时间放到shijianshuzu中
-    //歌词放到gecishuzu中
-    //shijianshuzu[i]就是对应的时间值
-    //gecishuzu[i]就是对应的歌词
-    //lrc歌词在代码中直接用变量a存储了，可以改
-    //这两个数组的长度就是lrc歌词中有多少个类似"[xx:xx.xx]歌词"这样的
+ 
     function parse(lrc) {
       //如果lrc的内容是"[xx:xx.xx]歌词1[yy:yy.yy]歌词二"
       //那str这个数组长度是3
@@ -221,8 +212,7 @@
       for (var i = 0; i < shijianshuzu.length; i++) {
         //      quanbugeci.innerHTML=quanbugeci.innerHTML+gecishuzu[i]+"<br>";
       }
-      //上面是用来显示所有歌词的，不用看
-      //定时器，隔1s更新下歌词的显示
+ 
       setInterval(updategeci, 1000);
     }
     //更新歌词
@@ -267,13 +257,10 @@
         geciliu.innerHTML = "&nbsp;";
       }
     }
-    //将歌曲实际播放的时间，和我们自己的歌词的时间，进行比较，算出现在应该显示的歌词
+
     function getcurrent() {
       var a = document.getElementById("test");
       var i = 0;
-      //152,154存歌词和时间的时候
-      //时间是由小到大的
-      //当然实际的歌词不一定都是由小到大，还可能是两个时间重复的歌词就合并到一起，其他的情况都没做处理
       for (i = 0; i < shijianshuzu.length; i++) {
         //数和undefined比较，undefined要大些。
         if (shijianshuzu[i] >= a.currentTime) {
@@ -295,12 +282,12 @@
     (function ok() {
       parse(a);
     })()
-    //歌词时间减少2S
+
     function back() {
       localStorage.time = parseInt(localStorage.time) - 2;
       parse(a);
     }
-    //歌词时间增加2s
+
     function forward() {
       localStorage.time = parseInt(localStorage.time) + 2;
 
